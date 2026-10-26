@@ -1,0 +1,39 @@
+{
+  "name": "@soodidi/eslint-config",
+  "version": "0.1.0",
+  "description": "Configuration ESLint (flat config) partagée : base TypeScript, React, Node (FE-002, BE-007).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tanstack/eslint-plugin-query": "^5.104.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-testing-library": "^7.16.2",
+    "globals": "^17.13.0",
+    "typescript-eslint": "^8.72.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.0",
+    "typescript": ">=5.9 <6.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soodidi/shared-libs.git",
+    "directory": "packages/eslint-config"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@soodidi/commitlint-config",
+  "version": "0.1.0",
+  "description": "Règles commitlint : Conventional Commits + type `adr` (GLB-002).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "@commitlint/config-conventional": "^21.2.4"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": "^21.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soodidi/shared-libs.git",
+    "directory": "packages/commitlint-config"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Preset Renovate partagé (GLB-008). Usage : { \"extends\": [\"github>soodidi/shared-libs\"] }",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    "helpers:pinGitHubActionDigests",
+    ":maintainLockFilesWeekly"
+  ],
+  "timezone": "Europe/Paris",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 10,
+  "minimumReleaseAge": "3 days",
+  "vulnerabilityAlerts": {
+    "schedule": ["at any time"],
+    "labels": ["security"]
+  },
+  "packageRules": [
+    {
+      "description": "Correctifs et mineurs hors frameworks : fusion automatique si la CI est verte",
+      "matchUpdateTypes": ["patch", "minor", "digest", "pin"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "description": "Frameworks principaux : toujours relus à la main",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "vite",
+        "typescript",
+        "/^@nestjs\\//",
+        "drizzle-orm",
+        "drizzle-kit",
+        "/^@tanstack\\//",
+        "tailwindcss",
+        "com.android.tools.build:gradle",
+        "org.jetbrains.kotlin:kotlin-gradle-plugin"
+      ],
+      "automerge": false
+    },
+    {
+      "description": "Regrouper les mises à jour par écosystème",
+      "matchPackageNames": ["/^@nestjs\\//"],
+      "groupName": "nestjs"
+    },
+    {
+      "matchPackageNames": ["/^@tanstack\\//"],
+      "groupName": "tanstack"
+    },
+    {
+      "matchPackageNames": ["/^@sentry\\//"],
+      "groupName": "sentry"
+    },
+    {
+      "matchPackageNames": [
+        "eslint",
+        "@eslint/js",
+        "typescript-eslint",
+        "/^eslint-/",
+        "/^@typescript-eslint\\//"
+      ],
+      "groupName": "eslint"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    },
+    {
+      "description": "Majeures : une PR par paquet, jamais fusionnée automatiquement",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "major"]
+    }
+  ]
+}
