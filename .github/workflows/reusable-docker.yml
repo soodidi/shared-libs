@@ -1,0 +1,69 @@
+name: reusable-docker
+
+# Workflow réutilisable (OPS-001, OPS-002) : build de l'image, scan Trivy, push sur le registre.
+# L'image est taguée avec le SHA du commit ; jamais `latest`.
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        description: "Nom complet de l'image, ex. rg.fr-par.scw.cloud/mon-projet/api"
+        type: string
+        required: true
+      context:
+        type: string
+        default: .
+      push:
+        description: Pousser l'image (false sur les PR)
+        type: boolean
+        default: false
+      registry:
+        type: string
+        default: rg.fr-par.scw.cloud
+    secrets:
+      registry-username:
+        required: false
+      registry-password:
+        required: false
+    outputs:
+      image:
+        description: Image construite, taguée avec le SHA
+        value: ${{ jobs.build.outputs.image }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      image: ${{ inputs.image-name }}:${{ github.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - if: inputs.push
+        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ secrets.registry-username }}
+          password: ${{ secrets.registry-password }}
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ inputs.context }}
+          load: true
+          tags: ${{ inputs.image-name }}:${{ github.sha }}
+          build-args: |
+            APP_VERSION=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      # OPS-001 : une vulnérabilité critique ou haute corrigeable bloque le build.
+      - uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          image-ref: ${{ inputs.image-name }}:${{ github.sha }}
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: '1'
+      - if: inputs.push
+        run: docker push "${{ inputs.image-name }}:${{ github.sha }}"

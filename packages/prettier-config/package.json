@@ -1,0 +1,32 @@
+{
+  "name": "@soodidi/prettier-config",
+  "version": "0.1.0",
+  "description": "Configuration Prettier partagée (+ variante Tailwind, FE-005).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./tailwind": "./tailwind.js"
+  },
+  "files": [
+    "index.js",
+    "tailwind.js"
+  ],
+  "peerDependencies": {
+    "prettier": "^3.6.0",
+    "prettier-plugin-tailwindcss": ">=0.8.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier-plugin-tailwindcss": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soodidi/shared-libs.git",
+    "directory": "packages/prettier-config"
+  }
+}

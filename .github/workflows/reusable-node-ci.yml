@@ -1,0 +1,61 @@
+name: reusable-node-ci
+
+# Workflow réutilisable (OPS-002) : installation npm, vérifications, scan de secrets.
+# Usage depuis un autre repo :
+#   jobs:
+#     ci:
+#       uses: soodidi/shared-libs/.github/workflows/reusable-node-ci.yml@main
+#       with:
+#         verify-script: verify
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: Dossier du projet Node
+        type: string
+        default: .
+      verify-script:
+        description: Script npm run qui enchaîne format, lint, typecheck, tests et build
+        type: string
+        default: verify
+      needs-docker:
+        description: Le projet lance des conteneurs pendant les tests (Testcontainers)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: ${{ inputs.working-directory }}/.nvmrc
+          cache: npm
+          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+      - run: npm ci
+      - run: npm run ${{ inputs.verify-script }}
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # GLB-005 : aucun secret dans l'historique.
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

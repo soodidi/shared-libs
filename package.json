@@ -1,0 +1,36 @@
+{
+  "name": "shared-libs",
+  "private": true,
+  "description": "Configurations et libs communes (@soodidi/*) : TypeScript, ESLint, Prettier, commitlint, Problem Details, validation de config.",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.12",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "npm run format:check && npm run lint && npm run build && npm run typecheck && npm run test",
+    "changeset": "changeset",
+    "release": "npm run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.1",
+    "@soodidi/eslint-config": "*",
+    "@soodidi/prettier-config": "*",
+    "@soodidi/tsconfig": "*",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5"
+  },
+  "prettier": "@soodidi/prettier-config"
+}
