@@ -49,6 +49,13 @@
       "description": "Majeures : une PR par paquet, étiquetée pour rester repérable (fusion automatique si la CI est verte, GLB-011)",
       "matchUpdateTypes": ["major"],
       "labels": ["dependencies", "major"]
+    },
+    {
+      "description": "Librairies d'authentification : jamais de fusion automatique ; lire le changelog et passer les tests de l'auth (BE-006). Placée en dernier pour l'emporter sur les règles précédentes.",
+      "matchPackageNames": ["better-auth", "/^@better-auth\\//", "@thallesp/nestjs-better-auth"],
+      "groupName": "better-auth",
+      "automerge": false,
+      "labels": ["dependencies", "security-review"]
     }
   ]
 }
