@@ -1,6 +1,6 @@
 {
   "name": "@soodidi/design-tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Socle de design commun (GLB-012) : thèmes épuré, chaleureux et coloré, en clair et en sombre, pour le web (Tailwind), Android (Compose) et iOS (SwiftUI).",
   "license": "UNLICENSED",
   "type": "module",
