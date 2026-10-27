@@ -15,6 +15,9 @@ concurrency:
 jobs:
   verify:
     uses: ./.github/workflows/reusable-node-ci.yml
+    permissions:
+      contents: read
+      pull-requests: read
     with:
       verify-script: verify
 
