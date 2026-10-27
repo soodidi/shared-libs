@@ -4,16 +4,17 @@ Configurations et libs communes à plusieurs projets ([GLB-010](https://github.c
 
 ## Contenu
 
-| Package / fichier                                          | Rôle                                                                        | ADR                            |
-| ---------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------ |
-| [`@soodidi/tsconfig`](packages/tsconfig)                   | Configs TypeScript strictes (base, React, Node, librairie)                  | FE-002, BE-001                 |
-| [`@soodidi/eslint-config`](packages/eslint-config)         | Flat config ESLint : `base`, `react`, `node`                                | FE-002, FE-007, FE-008, BE-007 |
-| [`@soodidi/prettier-config`](packages/prettier-config)     | Config Prettier (+ variante Tailwind)                                       | FE-005                         |
-| [`@soodidi/commitlint-config`](packages/commitlint-config) | Conventional Commits + type `adr`                                           | GLB-002                        |
-| [`@soodidi/problem-details`](packages/problem-details)     | Format d'erreur API RFC 9457, partagé back ↔ front                          | BE-004, FE-006, FE-009         |
-| [`@soodidi/env`](packages/env)                             | Validation de la configuration au démarrage                                 | GLB-005, BE-005                |
-| [`default.json`](default.json)                             | Preset Renovate                                                             | GLB-008                        |
-| [`.github/workflows/reusable-*.yml`](.github/workflows)    | Workflows GitHub Actions réutilisables (CI Node, image Docker, titre de PR) | OPS-001, OPS-002, GLB-002      |
+| Package / fichier                                          | Rôle                                                                               | ADR                            |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------ |
+| [`@soodidi/tsconfig`](packages/tsconfig)                   | Configs TypeScript strictes (base, React, Node, librairie)                         | FE-002, BE-001                 |
+| [`@soodidi/eslint-config`](packages/eslint-config)         | Flat config ESLint : `base`, `react`, `node`                                       | FE-002, FE-007, FE-008, BE-007 |
+| [`@soodidi/prettier-config`](packages/prettier-config)     | Config Prettier (+ variante Tailwind)                                              | FE-005                         |
+| [`@soodidi/commitlint-config`](packages/commitlint-config) | Conventional Commits + type `adr`                                                  | GLB-002                        |
+| [`@soodidi/problem-details`](packages/problem-details)     | Format d'erreur API RFC 9457, partagé back ↔ front                                 | BE-004, FE-006, FE-009         |
+| [`@soodidi/env`](packages/env)                             | Validation de la configuration au démarrage                                        | GLB-005, BE-005                |
+| [`@soodidi/design-tokens`](packages/design-tokens)         | Thèmes épuré, chaleureux, coloré (clair et sombre) pour Tailwind, Compose, SwiftUI | GLB-012, FE-005                |
+| [`default.json`](default.json)                             | Preset Renovate                                                                    | GLB-008                        |
+| [`.github/workflows/reusable-*.yml`](.github/workflows)    | Workflows GitHub Actions réutilisables (CI Node, image Docker, titre de PR)        | OPS-001, OPS-002, GLB-002      |
 
 ## Utiliser les packages dans un projet
 

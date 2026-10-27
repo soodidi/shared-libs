@@ -1,0 +1,40 @@
+{
+  "name": "@soodidi/design-tokens",
+  "version": "0.0.0",
+  "description": "Socle de design commun (GLB-012) : thèmes épuré, chaleureux et coloré, en clair et en sombre, pour le web (Tailwind), Android (Compose) et iOS (SwiftUI).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./css/*": "./generated/css/*"
+  },
+  "files": [
+    "dist",
+    "generated"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/generate.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@soodidi/tsconfig": "*",
+    "@types/node": "^24.0.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soodidi/shared-libs.git",
+    "directory": "packages/design-tokens"
+  }
+}
