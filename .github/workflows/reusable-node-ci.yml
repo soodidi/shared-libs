@@ -5,6 +5,9 @@ name: reusable-node-ci
 #   jobs:
 #     ci:
 #       uses: soodidi/shared-libs/.github/workflows/reusable-node-ci.yml@main
+#       permissions:
+#         contents: read
+#         pull-requests: read # gitleaks lit les commits de la PR
 #       with:
 #         verify-script: verify
 
@@ -50,6 +53,10 @@ jobs:
   secrets:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
+      # gitleaks-action lists the PR commits through the API.
+      pull-requests: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
