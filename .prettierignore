@@ -2,3 +2,6 @@ dist/
 coverage/
 package-lock.json
 CHANGELOG.md
+
+# Fichiers générés (GLB-012), comparés au générateur par les tests.
+packages/design-tokens/generated/

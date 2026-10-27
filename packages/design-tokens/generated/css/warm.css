@@ -1,0 +1,81 @@
+/* Généré par @soodidi/design-tokens (thème « Chaleureux ») : ne pas modifier, régénérer (GLB-012). */
+:root {
+  --background: #fcfaf6;
+  --foreground: #292524;
+  --card: #ffffff;
+  --card-foreground: #292524;
+  --primary: #a8520a;
+  --primary-foreground: #ffffff;
+  --secondary: #f3eadc;
+  --secondary-foreground: #3d2a14;
+  --muted: #f3eee6;
+  --muted-foreground: #68594b;
+  --accent: #e6efe1;
+  --accent-foreground: #2f4a28;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --success: #3f6f2a;
+  --success-foreground: #ffffff;
+  --warning: #8a5a00;
+  --warning-foreground: #ffffff;
+  --border: #e8dfd2;
+  --input: #958672;
+  --ring: #c2670f;
+  --radius-small: 0.5rem;
+  --radius: 0.75rem;
+  --radius-large: 1.125rem;
+  --app-font-sans: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode='light']) {
+    --background: #1c1815;
+    --foreground: #f4eee6;
+    --card: #26211c;
+    --card-foreground: #f4eee6;
+    --primary: #f0a64a;
+    --primary-foreground: #2a1803;
+    --secondary: #3a3027;
+    --secondary-foreground: #f4eee6;
+    --muted: #2e2822;
+    --muted-foreground: #b9ab9b;
+    --accent: #2b3a26;
+    --accent-foreground: #cfe3c5;
+    --destructive: #f28b82;
+    --destructive-foreground: #3b0a07;
+    --success: #9bcf86;
+    --success-foreground: #16290d;
+    --warning: #f5c451;
+    --warning-foreground: #2e2000;
+    --border: #3a332c;
+    --input: #7a6d60;
+    --ring: #f0a64a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-mode='dark'] {
+  --background: #1c1815;
+  --foreground: #f4eee6;
+  --card: #26211c;
+  --card-foreground: #f4eee6;
+  --primary: #f0a64a;
+  --primary-foreground: #2a1803;
+  --secondary: #3a3027;
+  --secondary-foreground: #f4eee6;
+  --muted: #2e2822;
+  --muted-foreground: #b9ab9b;
+  --accent: #2b3a26;
+  --accent-foreground: #cfe3c5;
+  --destructive: #f28b82;
+  --destructive-foreground: #3b0a07;
+  --success: #9bcf86;
+  --success-foreground: #16290d;
+  --warning: #f5c451;
+  --warning-foreground: #2e2000;
+  --border: #3a332c;
+  --input: #7a6d60;
+  --ring: #f0a64a;
+  color-scheme: dark;
+}

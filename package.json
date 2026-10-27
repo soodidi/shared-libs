@@ -1,7 +1,7 @@
 {
   "name": "shared-libs",
   "private": true,
-  "description": "Configurations et libs communes (@soodidi/*) : TypeScript, ESLint, Prettier, commitlint, Problem Details, validation de config.",
+  "description": "Configurations et libs communes (@soodidi/*) : TypeScript, ESLint, Prettier, commitlint, Problem Details, validation de config, design tokens.",
   "type": "module",
   "workspaces": [
     "packages/*"
