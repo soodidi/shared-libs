@@ -51,9 +51,10 @@
       "labels": ["dependencies", "major"]
     },
     {
-      "description": "Librairies d'authentification : jamais de fusion automatique ; lire le changelog et passer les tests de l'auth (BE-006). Placée en dernier pour l'emporter sur les règles précédentes.",
+      "description": "Librairies d'authentification : version exacte (la maintenance hebdomadaire du lockfile ne peut donc pas les monter) et jamais de fusion automatique ; lire le changelog et passer les tests de l'auth (BE-006). Placée en dernier pour l'emporter sur les règles précédentes.",
       "matchPackageNames": ["better-auth", "/^@better-auth\\//", "@thallesp/nestjs-better-auth"],
       "groupName": "better-auth",
+      "rangeStrategy": "pin",
       "automerge": false,
       "labels": ["dependencies", "security-review"]
     }
